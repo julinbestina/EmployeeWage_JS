@@ -4,9 +4,10 @@ const FULL_TIME_HOUR = 8;
 const EMP_FULLTIME = 1;
 const EMP_PARTTIME = 2;
 const WAGE_PER_HOUR = 20;
+const WORKING_DAYS = 20;
 
 let empHour = 0;
-let empCheck = Math.floor(Math.random() * 10) % 3;
+
 
 function getWorkingHours(empCheck) {
     switch(empCheck) {
@@ -21,6 +22,10 @@ function getWorkingHours(empCheck) {
     }
 }
 
-empHour = getWorkingHours(empCheck);
+for(let day = 0; day < WORKING_DAYS; day++) {
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    empHour += getWorkingHours(empCheck);
+}
+
 let empWage = empHour * WAGE_PER_HOUR;
 console.log("Employee wage :" + empWage);
