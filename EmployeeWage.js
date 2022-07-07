@@ -9,6 +9,7 @@ const MAX_WORKING_HR = 160;
 
 let totalEmpHour = 0;
 let totalWorkingDays = 0;
+let empWageArray = new Array();
 
 
 function getWorkingHours(empCheck) {
@@ -24,11 +25,20 @@ function getWorkingHours(empCheck) {
     }
 }
 
+function calculateEmpWage(empHour) {
+    return empHour * WAGE_PER_HOUR;
+}
+
 while(totalEmpHour < MAX_WORKING_HR && totalWorkingDays < WORKING_DAYS) {
     totalWorkingDays++;
     let empCheck = Math.floor(Math.random() * 10) % 3;
-    totalEmpHour += getWorkingHours(empCheck);
+    let empHour = getWorkingHours(empCheck);
+    totalEmpHour += empHour;
+    empWageArray.push(calculateEmpWage(empHour));
 }
 
-let empWage = totalEmpHour * WAGE_PER_HOUR;
-console.log("Working hours :" + totalEmpHour + " Hours, " + "  Working days :" + totalWorkingDays + "days   Employee wage =" + empWage);
+let totalEmpWage = calculateEmpWage(totalEmpHour);
+empWageArray.push(totalEmpWage); 
+console.log("Working hours :" + totalEmpHour + " Hours, " + "  Working days :" +
+ totalWorkingDays + "days   Employee wage =" + totalEmpWage);
+ console.log(empWageArray);
