@@ -33,6 +33,12 @@ function totalWage(totalwage,dailywage) {
     return totalwage +dailywage;
   }
 
+  let day = 0;
+  function mapWageWithDay(dailywage) {
+    day++;
+    return "Day " + day + "=" + dailywage;
+  }
+
 while(totalEmpHour < MAX_WORKING_HR && totalWorkingDays < WORKING_DAYS) {
     totalWorkingDays++;
     let empCheck = Math.floor(Math.random() * 10) % 3;
@@ -42,6 +48,8 @@ while(totalEmpHour < MAX_WORKING_HR && totalWorkingDays < WORKING_DAYS) {
 }
 
 let totalEmpWage = empWageArray.reduce(totalWage, 0);
+let wageWithDayArr = empWageArray.map(mapWageWithDay);
 
 console.log("Working hours :" + totalEmpHour + " Hours, " + "  Working days :" + totalWorkingDays + "days   Employee wage =" + totalEmpWage);
 console.log(empWageArray);
+console.log(wageWithDayArr);
